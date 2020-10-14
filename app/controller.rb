@@ -10,9 +10,10 @@ module App
 
             doc = Nokogiri::HTML(agent&.page&.body)
 
-            node = doc.xpath('//*[@id="firstHeading"]')&.first
-
-            return node.text
+            title = doc.xpath('//*[@id="firstHeading"]')&.first
+            desc = doc.xpath('//*[@id="mw-content-text"]/div[1]/p[1]')&.first
+            puts "#{title.text} \n \n #{desc.text}"
+            nil
         end
     end
 
